@@ -18,13 +18,18 @@ extension SearchViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let results = searchResult {
+            return results.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchSongTableViewCell", for: indexPath) as! SearchSongTableViewCell
-        cell.songTitleLabel.text = "1"
-        cell.artistNameLabel.text = "2"
+        if let result = searchResult?[indexPath.row] {
+            cell.setSongInformation(info: result)
+        }
         cell.delegate = self
         return cell
     }
@@ -40,5 +45,20 @@ extension SearchViewController: SearchSongTableViewCellDelegate {
     func updateTableView() {
         
         tableView.reloadData()
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        presenter.cleanTableResults()
+        presenter.getItunesResults(text: textToSearch)
+        view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        textToSearch = searchText
     }
 }

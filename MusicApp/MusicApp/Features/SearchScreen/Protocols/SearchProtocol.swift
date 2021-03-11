@@ -23,6 +23,9 @@ protocol SearchRouterProtocol {
 
 protocol SearchInteractorProtocol {
     
+    var presenter: SearchPresenter? {get set}
+    
+    func getItunesResults(text: String)
 }
 
 protocol SearchSongTableViewCellDelegate: AnyObject {

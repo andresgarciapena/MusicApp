@@ -118,9 +118,15 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="albumLabel" destination="hVk-PV-AaS" id="0gE-fv-dB2"/>
                 <outlet property="artistNameLabel" destination="Lym-Wu-fJI" id="om3-Wz-00c"/>
+                <outlet property="coverLabel" destination="RRV-ks-cqC" id="yQj-7W-SKJ"/>
+                <outlet property="dateLabel" destination="DWA-qE-An0" id="z6G-Wk-yEu"/>
                 <outlet property="detailsButton" destination="YbE-c5-DpG" id="tvq-1O-n6w"/>
+                <outlet property="genreLabel" destination="Rl0-oY-z2d" id="g46-12-LVx"/>
+                <outlet property="lengthLabel" destination="T0z-xK-LhP" id="D6a-ec-f8l"/>
                 <outlet property="moreDetailsView" destination="Alg-34-Zq7" id="jFh-GQ-PKC"/>
+                <outlet property="priceLabel" destination="Lao-rh-YIQ" id="beu-px-UYo"/>
                 <outlet property="songTitleLabel" destination="BqX-Vy-Hgw" id="qo9-iJ-Gko"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="116.85267857142857"/>

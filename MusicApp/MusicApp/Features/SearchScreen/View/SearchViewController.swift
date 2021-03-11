@@ -16,6 +16,9 @@ class SearchViewController: UIViewController {
     
     var presenter: SearchPresenter = SearchPresenter()
     
+    var textToSearch: String = ""
+    var searchResult: [ItunesSongInfo]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
