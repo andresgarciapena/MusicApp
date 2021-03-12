@@ -17,6 +17,8 @@ class SearchPresenter: SearchProtocol {
         
         SearchRouter.configureComponents(presenter: self)
         viewRef?.configureView()
+        viewRef?.hideKeyboardWhenTapAnywhere()
+        viewRef?.overrideUserInterfaceStyle = .light
     }
     
     func viewWillAppear(animated: Bool, navigationController: UINavigationController?) {
@@ -40,5 +42,32 @@ class SearchPresenter: SearchProtocol {
         
         viewRef?.searchResult = []
         viewRef?.tableView.reloadData()
+    }
+    
+    func orderBySongLenght() {
+        
+        let order = viewRef?.searchResult?.sorted(by: { $0.trackTimeMillis! > $1.trackTimeMillis! })
+        viewRef?.searchResult = order
+        viewRef?.tableView.reloadData()
+    }
+    
+    func orderByGenre() {
+
+        let order = viewRef?.searchResult?.sorted(by: { $0.primaryGenreName > $1.primaryGenreName })
+        viewRef?.searchResult = order
+        viewRef?.tableView.reloadData()
+    }
+    
+    func orderByPrice() {
+        
+        let order = viewRef?.searchResult?.sorted(by: { $0.trackPrice! > $1.trackPrice! })
+        viewRef?.searchResult = order
+        viewRef?.tableView.reloadData()
+    }
+    
+    func navigationToPlayerView(searchResult: [ItunesSongInfo]?, position: Int) {
+        
+        guard let sourceController = viewRef else { return }
+        router?.goToPlayerView(searchResult: searchResult, position: position, fromController: sourceController)
     }
 }

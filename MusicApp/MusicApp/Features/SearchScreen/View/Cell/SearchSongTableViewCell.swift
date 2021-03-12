@@ -15,10 +15,10 @@ class SearchSongTableViewCell: UITableViewCell {
     @IBOutlet weak var moreDetailsView: UIView!
     @IBOutlet weak var albumLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var coverLabel: UILabel!
     @IBOutlet weak var lengthLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var coverImageView: UIImageView!
     
     weak var delegate: SearchSongTableViewCellDelegate?
     
@@ -39,7 +39,7 @@ class SearchSongTableViewCell: UITableViewCell {
         artistNameLabel.text = info.artistName
         albumLabel.text = info.collectionName
         dateLabel.text = info.releaseDate
-        coverLabel.text = info.artworkUrl30
+        coverImageView.image = urlToImage(urlString: info.artworkUrl100)
         lengthLabel.text = timeFormattedString(time: TimeInterval(info.trackTimeMillis!))
         genreLabel.text = info.primaryGenreName
         priceLabel.text = String(format: "%.2f€", info.trackPrice!)

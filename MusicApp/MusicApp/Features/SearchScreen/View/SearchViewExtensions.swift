@@ -11,6 +11,7 @@ extension SearchViewController {
     
     func configureView() {
         
+        searchBar.showsCancelButton = false
         tableView.register(UINib(nibName: "SearchSongTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchSongTableViewCell")
     }
 }
@@ -36,7 +37,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print(indexPath.row)
+        presenter.navigationToPlayerView(searchResult: searchResult, position: indexPath.row)
     }
 }
 
@@ -49,13 +50,6 @@ extension SearchViewController: SearchSongTableViewCellDelegate {
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        presenter.cleanTableResults()
-        presenter.getItunesResults(text: textToSearch)
-        view.endEditing(true)
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         

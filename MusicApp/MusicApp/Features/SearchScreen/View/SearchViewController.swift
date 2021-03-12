@@ -31,5 +31,27 @@ class SearchViewController: UIViewController {
         
         presenter.viewWillAppear(animated: animated, navigationController: navigationController)
     }
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        
+        presenter.cleanTableResults()
+        presenter.getItunesResults(text: textToSearch)
+        hideKeyboardWhenTapAnywhere()
+    }
+    
+    @IBAction func songLengthButtonTapped(_ sender: Any) {
+        
+        presenter.orderBySongLenght()
+    }
+    
+    @IBAction func genreButtonTapped(_ sender: Any) {
+        
+        presenter.orderByGenre()
+    }
+    
+    @IBAction func priceButtonTapped(_ sender: Any) {
+        
+        presenter.orderByPrice()
+    }
 }
 

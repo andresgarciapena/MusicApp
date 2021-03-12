@@ -19,6 +19,7 @@ protocol SearchProtocol {
 
 protocol SearchRouterProtocol {
     
+    func goToPlayerView(searchResult: [ItunesSongInfo]?, position: Int, fromController: SearchViewController)
 }
 
 protocol SearchInteractorProtocol {
