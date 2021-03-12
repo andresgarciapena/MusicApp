@@ -18,7 +18,7 @@ class SearchRouter {
     
     func navigateToPlayerView(searchResult: [ItunesSongInfo]?, position: Int, classRef: UIViewController) {
         
-        let vc = PlayerViewController(nibName: "PlayerViewController", bundle: nil)
+        let vc = PlayerViewController(nibName: ViewIdentifier.playerVCId, bundle: nil)
         vc.searchResult = searchResult
         vc.selectedResultPosition = position
         guard let navigationController = classRef.navigationController else { return }

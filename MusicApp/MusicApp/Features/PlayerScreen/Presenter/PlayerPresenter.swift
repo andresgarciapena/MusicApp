@@ -83,25 +83,11 @@ class PlayerPresenter: PlayerProtocol {
     
     func publishIG() {
         
-        let instagramUser = "instagram://user?username=andres"
-        let instagramUrl = NSURL(string: instagramUser)
-        if UIApplication.shared.canOpenURL(instagramUrl! as URL) {
-            UIApplication.shared.open(instagramUrl! as URL)
-        } else {
-            guard let url = URL(string: "http://instagram.com/") else { return }
-            UIApplication.shared.open(url)
-        }
+        interactor?.publishSongIG()
     }
     
     func publishTwitter() {
         
-        let twitterUser = "twitter://user?username=andres"
-        let twitterUrl = NSURL(string: twitterUser)
-        if UIApplication.shared.canOpenURL(twitterUrl! as URL) {
-            UIApplication.shared.open(twitterUrl! as URL)
-        } else {
-            guard let url = URL(string: "http://twitter.com/") else { return }
-            UIApplication.shared.open(url)
-        }
+        interactor?.publishSongTwitter()
     }
 }

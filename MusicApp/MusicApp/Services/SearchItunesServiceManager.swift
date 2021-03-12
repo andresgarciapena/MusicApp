@@ -14,7 +14,7 @@ class SearchItunesServiceManager {
     
     func requestMusicList(text: String, completion: @escaping (ItunesSongResponse?, Error?) -> Void) {
         
-        let apiToContact = "https://itunes.apple.com/search?media=music&term=" + text
+        let apiToContact = Constants.apiUrl + text
         
         let request = AF.request(apiToContact)
         

@@ -41,17 +41,17 @@ class SearchViewController: UIViewController {
     
     @IBAction func songLengthButtonTapped(_ sender: Any) {
         
-        presenter.orderBySongLenght()
+        presenter.orderResults(orderType: .songLength)
     }
     
     @IBAction func genreButtonTapped(_ sender: Any) {
         
-        presenter.orderByGenre()
+        presenter.orderResults(orderType: .genre)
     }
     
     @IBAction func priceButtonTapped(_ sender: Any) {
         
-        presenter.orderByPrice()
+        presenter.orderResults(orderType: .price)
     }
 }
 

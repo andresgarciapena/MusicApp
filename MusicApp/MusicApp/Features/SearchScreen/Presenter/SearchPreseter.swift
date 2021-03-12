@@ -44,24 +44,11 @@ class SearchPresenter: SearchProtocol {
         viewRef?.tableView.reloadData()
     }
     
-    func orderBySongLenght() {
+    func orderResults(orderType: OrderType) {
         
-        let order = viewRef?.searchResult?.sorted(by: { $0.trackTimeMillis! > $1.trackTimeMillis! })
-        viewRef?.searchResult = order
-        viewRef?.tableView.reloadData()
-    }
-    
-    func orderByGenre() {
-
-        let order = viewRef?.searchResult?.sorted(by: { $0.primaryGenreName > $1.primaryGenreName })
-        viewRef?.searchResult = order
-        viewRef?.tableView.reloadData()
-    }
-    
-    func orderByPrice() {
-        
-        let order = viewRef?.searchResult?.sorted(by: { $0.trackPrice! > $1.trackPrice! })
-        viewRef?.searchResult = order
+        guard let results = viewRef?.searchResult else { return }
+        let ordered = interactor?.orderResultsByType(orderType: orderType, searchResult: results)
+        viewRef?.searchResult = ordered
         viewRef?.tableView.reloadData()
     }
     

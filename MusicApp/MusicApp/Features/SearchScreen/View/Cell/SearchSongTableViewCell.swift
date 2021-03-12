@@ -42,13 +42,13 @@ class SearchSongTableViewCell: UITableViewCell {
         coverImageView.image = urlToImage(urlString: info.artworkUrl100)
         lengthLabel.text = timeFormattedString(time: TimeInterval(info.trackTimeMillis!))
         genreLabel.text = info.primaryGenreName
-        priceLabel.text = String(format: "%.2f€", info.trackPrice!)
+        priceLabel.text = String(format: Constants.priceFormat, info.trackPrice!)
     }
     
     func timeFormattedString(time: TimeInterval) -> String {
-        let minute = Int(time) / 60 % 60
+        let minute = Int(time) / 1000 / 60 % 60
         let second = Int(time) % 60
-        return String(format: "%02i minutes %02i seconds", minute, second)
+        return String(format: Constants.songDurationFormat, minute, second)
     }
     
     @IBAction func detailsButtonTapped(_ sender: Any) {

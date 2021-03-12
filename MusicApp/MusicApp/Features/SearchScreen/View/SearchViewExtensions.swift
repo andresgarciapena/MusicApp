@@ -12,7 +12,7 @@ extension SearchViewController {
     func configureView() {
         
         searchBar.showsCancelButton = false
-        tableView.register(UINib(nibName: "SearchSongTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchSongTableViewCell")
+        tableView.register(UINib(nibName: ViewIdentifier.searchSongCellId, bundle: nil), forCellReuseIdentifier: ViewIdentifier.searchSongCellId)
     }
 }
 
@@ -27,7 +27,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchSongTableViewCell", for: indexPath) as! SearchSongTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewIdentifier.searchSongCellId, for: indexPath) as! SearchSongTableViewCell
         if let result = searchResult?[indexPath.row] {
             cell.setSongInformation(info: result)
         }
