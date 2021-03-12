@@ -9,21 +9,49 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var filterLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var presenter: SearchPresenter = SearchPresenter()
+    
+    var textToSearch: String = ""
+    var searchResult: [ItunesSongInfo]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        presenter.viewRef = self
+        presenter.viewDidLoad()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.viewWillAppear(animated: animated, navigationController: navigationController)
     }
-    */
-
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        
+        presenter.cleanTableResults()
+        presenter.getItunesResults(text: textToSearch)
+        hideKeyboardWhenTapAnywhere()
+    }
+    
+    @IBAction func songLengthButtonTapped(_ sender: Any) {
+        
+        presenter.orderResults(orderType: .songLength)
+    }
+    
+    @IBAction func genreButtonTapped(_ sender: Any) {
+        
+        presenter.orderResults(orderType: .genre)
+    }
+    
+    @IBAction func priceButtonTapped(_ sender: Any) {
+        
+        presenter.orderResults(orderType: .price)
+    }
 }
+

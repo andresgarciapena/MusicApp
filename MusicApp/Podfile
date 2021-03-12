@@ -6,6 +6,7 @@ target 'MusicApp' do
   use_frameworks!
 
   # Pods for MusicApp
+  pod 'Alamofire', '~> 5.2'
 
   target 'MusicAppTests' do
     inherit! :search_paths
