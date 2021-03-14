@@ -30,6 +30,11 @@ class PlayerPresenter: PlayerProtocol {
         navigationController?.navigationBar.tintColor = UIColor.black
     }
     
+    func viewWillDisappear() {
+        
+        playSong(state: false)
+    }
+    
     func reproducePreviousSong() {
         
         if viewRef?.selectedResultPosition == 0 {

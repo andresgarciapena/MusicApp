@@ -15,6 +15,7 @@ protocol PlayerProtocol {
     
     func viewDidLoad()
     func viewWillAppear(animated: Bool, navigationController: UINavigationController?)
+    func viewWillDisappear()
 }
 
 protocol PlayerRouterProtocol {

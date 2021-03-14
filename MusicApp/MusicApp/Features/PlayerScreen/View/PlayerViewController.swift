@@ -37,6 +37,12 @@ class PlayerViewController: UIViewController {
         presenter.viewWillAppear(animated: animated, navigationController: navigationController)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter.viewWillDisappear()
+    }
+    
     @IBAction func previousButtonTapped(_ sender: Any) {
         presenter.reproducePreviousSong()
     }

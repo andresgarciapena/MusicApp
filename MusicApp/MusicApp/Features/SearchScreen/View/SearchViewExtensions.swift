@@ -55,4 +55,11 @@ extension SearchViewController: UISearchBarDelegate {
         
         textToSearch = searchText
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        presenter.cleanTableResults()
+        presenter.getItunesResults(text: textToSearch)
+        view.endEditing(true)
+    }
 }
